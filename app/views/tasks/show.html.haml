@@ -1,4 +1,6 @@
 %h3= @task.title
 %p= @task.description
 
+= button_to "Delete", list_task_path(@list, @task), method: :delete, class: "btn btn-sm btn-outline-danger"
+
 = link_to "Go back to lists", lists_path

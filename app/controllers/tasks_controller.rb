@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :find_list
-  before_action :find_task, only: [:show]
+  before_action :find_task, only: %i[show destroy]
 
   def new
     @task = Task.new(list: @list)
@@ -11,6 +11,12 @@ class TasksController < ApplicationController
 
   def create 
     task = @list.tasks.create(task_params)
+
+    redirect_to lists_path
+  end
+
+  def destroy
+    @task.destroy!
 
     redirect_to lists_path
   end
