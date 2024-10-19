@@ -5,6 +5,10 @@
   - @lists.each do |list|
     .col-3.border
       %h4= list.title
-      = button_to "Delete", list_path(list), method: :delete, class: "btn btn-primary"
+      .row.btn-group.mt-3.mb-3
+        .col
+          = link_to "Edit", edit_list_path(list), class: "btn btn-sm btn-outline-success"
+        .col
+          = button_to "Delete", list_path(list), method: :delete, class: "btn btn-sm btn-outline-danger"
   .col-3 
     = button_to "Add List", new_list_path, method: :get, class: "btn btn-primary"
