@@ -1,7 +1,31 @@
 class TasksController < ApplicationController
+  before_action :find_list
+  before_action :find_task, only: [:show]
+
+  def new
+    @task = Task.new(list: @list)
+  end
+
   def show
-    @task = Task.find(params[:id])
-    p "IM IN THE TASKS CONTROLLER"
-    p @task
+  end
+
+  def create 
+    task = @list.tasks.create(task_params)
+
+    redirect_to lists_path
+  end
+
+  private
+
+  def find_list
+    @list = List.find(params[:list_id])
+  end
+
+  def find_task
+    @task = @list.tasks.find(params[:id])
+  end
+
+  def task_params
+    params.permit(:title, :description)
   end
 end
