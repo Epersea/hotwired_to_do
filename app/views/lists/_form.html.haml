@@ -1,0 +1,7 @@
+= form_with model: @list do |f|
+  .field
+    = f.label :title
+    = f.text_field :title, autofocus: true
+
+  .actions.mt-3
+    = f.submit "Create List"
