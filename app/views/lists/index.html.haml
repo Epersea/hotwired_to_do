@@ -1,7 +1,9 @@
 .h1.ms-3.mt-3
-  = "My Task Lists"
+  = "My To-Do Lists"
 
 .row.flex-nowrap.overflow-auto.ms-3.mt-4
   - @lists.each do |list|
     .col-3.border
       %h4= list.title
+  .col-3 
+    = button_to "Add List", new_list_path, method: :get, class: "btn btn-primary"
